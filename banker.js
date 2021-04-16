@@ -83,14 +83,14 @@ class OS {
                     // 需求资源足够分配
                     !(tempAvailable
                         // 需求资源数量超出剩余资源数量的-
-                        .filter((sourceCount, sourceId) => this.need[pid][sourceId] > sourceCount)
+                        .filter((resourceCount, resourceId) => this.need[pid][resourceId] > resourceCount)
                         // 资源存在
                         .length > 0)
                 ) {
                     // 调度发生
                     dispatchDetected = true;
                     // 剩余资源增加计数
-                    tempAvailable = tempAvailable.map((sourceCount, sourceId) => sourceCount + this.alloc[pid][sourceId]);
+                    tempAvailable = tempAvailable.map((resourceCount, resourceId) => resourceCount + this.alloc[pid][resourceId]);
                     // 被调度的进程结束
                     finish[pid] = true;
                     //执行栈顺序记录
